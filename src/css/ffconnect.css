@@ -1,0 +1,19 @@
+.ffonnect{
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+}
+.f-profile{
+    width: 25%;
+    border: 1px solid gold;
+}
+
+.ffonnect h2{
+    color: green;
+}
+
+.f-show {
+    width: 75%;
+    border: 1px solid green;
+}
+
