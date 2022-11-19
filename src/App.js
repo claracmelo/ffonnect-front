@@ -27,7 +27,9 @@ const App = () => {
       // fetch to the backend
       console.log("first members: ")
       fetch(baseUrl + "/api/v1/members/",{
-        credentials: "include"
+        credentials: "include",headers: {
+          'Content-Type': 'application/json'
+        }
       })
       .then(res => {
         if(res.status === 200) {
@@ -66,8 +68,9 @@ const App = () => {
         if (response.status === 200) {
           console.log("this is the login:",response.data)
           setUser(true) 
+          console.log("here before get members")
           getMembers()
-          navigate("/new")
+          navigate("/user/tree")
         }
       }
       catch (err) {
@@ -104,7 +107,6 @@ const App = () => {
         console.log('Error => ', err);
       }
     }   
-
 
     const addMember =(member)=>{
       fetch(baseUrl + "/api/v1/members/",{
