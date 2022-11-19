@@ -67,7 +67,7 @@ const App = () => {
           console.log("this is the login:",response.data)
           setUser(true) 
           getMembers()
-          navigate("user/tree")
+          navigate("/new")
         }
       }
       catch (err) {
