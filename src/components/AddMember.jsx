@@ -7,6 +7,7 @@ const AddMember = (props) => {
     const { myRelation } = location.state
     console.log("this is the location", myRelation)
 
+    // example
     let friends = { label: "Friend", value: "Friend" }
     let parents = [{ label: "Father", value: "Father" },
     { label: "Mother", value: "Mother" }
