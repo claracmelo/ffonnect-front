@@ -7,7 +7,7 @@ const AddMember = (props) => {
     const { myRelation } = location.state
     const [relationship,setRelationship] = useState([])
     // example
-    let friends = { label: "Friend", value: "Friend" }
+    let friends = [{ label: "Friend", value: "Friend" }]
     let parents = [{ label: "Father", value: "Father" },
     { label: "Mother", value: "Mother" }
     ]
