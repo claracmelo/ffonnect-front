@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate,useLocation  } from "react-router-dom";
 
 
 const AddMember = (props) => {
     const location = useLocation()
-
-    console.log("this is the location", location)
     const { myRelation } = location.state
-
+    const [relationship,setRelationship] = useState([])
     // example
     let friends = { label: "Friend", value: "Friend" }
     let parents = [{ label: "Father", value: "Father" },
@@ -24,14 +22,6 @@ const AddMember = (props) => {
         { label: "Boyfriend", value: "Boyfriend" },
         { label: "Girlfriend", value: "Girlfriend" },
         { label: "Partner", value: "Partner" }
-    ]
-
-    let relationship = [
-        { label: "Spouse", value: "Spouse" },
-        { label: "Sister", value: "Sister" },
-        { label: "Brother", value: "Brother" },
-        { label: "Mother", value: "Mother" },
-        { label: "Father", value: "Father" }
     ]
 
     // Using state to keep track of what the selected relation is
@@ -68,6 +58,21 @@ const AddMember = (props) => {
         })
         navigate("/user/tree")
     }
+    useEffect(()=>{
+        if(myRelation == "friends"){
+            setRelationship(friends)
+        }
+        if(myRelation == "parents"){
+            setRelationship(parents)
+        }
+        if(myRelation == "partner"){
+            setRelationship(partner)
+        }
+        if(myRelation == "children"){
+            setRelationship(children)
+        }                        
+    },[])
+
     return (
         <>
             <h1>Add Member</h1>
@@ -80,13 +85,7 @@ const AddMember = (props) => {
                     {/* Mapping through each member object in our member array
                     and returning an option element with the appropriate attributes / values.
                      */}
-                    {/* {myRelation?
-                         <LogoutButton onClick={this.handleLogoutClick} />
-                        : <LoginButton onClick={this.handleLoginClick} />
-                    } */}
-
-
-                    {relationship.map((relation) => <option key={relation.label} value={relation.value}>{relation.label}</option>)}
+                    {relationship?.map((relation) => <option key={relation.label} value={relation.value}>{relation.label}</option>)}
                 </select>
                 <br />
                 <input id="relation" type="date" name="dob" value={member.dob} onChange={handleChange} />

@@ -15,7 +15,7 @@ const AllMembers = (props) => {
           <div className='card' key={member.id}>
             <div className='parent'>
               {/* above button */}
-              <button><Link to='/new' state={{myRelation: 'parent' }}
+              <button><Link to='/new' state={{myRelation: 'parents' }}
               >+</Link></button>
             </div>
             <div className='middle'>
