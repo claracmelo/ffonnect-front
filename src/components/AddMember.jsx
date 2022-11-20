@@ -6,6 +6,7 @@ const AddMember = (props) => {
     const location = useLocation()
     const { myRelation } = location.state
     const [relationship,setRelationship] = useState([])
+
     // example
     let friends = [{ label: "Friend", value: "Friend" }]
     let parents = [{ label: "Father", value: "Father" },
@@ -39,7 +40,8 @@ const AddMember = (props) => {
         relation: "",
         dob: "",
         status: "",
-        dod: ""
+        dod: "",
+        direct_relation:""
     })
 
     const handleChange = (e) => {
@@ -54,21 +56,22 @@ const AddMember = (props) => {
             relation: "",
             dob: "",
             status: "",
-            dod: ""
+            dod: "",
+            direct_relation:""
         })
         navigate("/user/tree")
     }
     useEffect(()=>{
-        if(myRelation == "friends"){
+        if(myRelation === "friends"){
             setRelationship(friends)
         }
-        if(myRelation == "parents"){
+        if(myRelation === "parents"){
             setRelationship(parents)
         }
-        if(myRelation == "partner"){
+        if(myRelation === "partner"){
             setRelationship(partner)
         }
-        if(myRelation == "children"){
+        if(myRelation === "children"){
             setRelationship(children)
         }                        
     },[])
@@ -87,11 +90,13 @@ const AddMember = (props) => {
                      */}
                     {relationship?.map((relation) => <option key={relation.label} value={relation.value}>{relation.label}</option>)}
                 </select>
+                
                 <br />
                 <input id="relation" type="date" name="dob" value={member.dob} onChange={handleChange} />
                 <input id="status" type="checkbox" name="status" value={member.status} onChange={handleChange} />
                 <input id="dod" type="date" name="dod" value={member.dod} onChange={handleChange} />
                 <input type="submit" value="Add Member" />
+                <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = `${myRelation}${member.name}`}>here is the label</label>
             </form>
         </>
     )
