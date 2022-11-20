@@ -35,7 +35,7 @@ const AddMember = (props) => {
     ]
 
     // Using state to keep track of what the selected relation is
-    let [relation, setRelation] = useState(myRelation)
+    let [relation, setRelation] = useState("Relation")
 
     // Using this function to update the state of relation
     // whenever a new option is selected from the dropdown
@@ -76,7 +76,7 @@ const AddMember = (props) => {
                 <input id="name" type="text" name="name" value={member.name} onChange={handleChange} />
                 <br />
                 <select onChange={handleRelationChange}>
-                    <option value={member.relation = relation} onChange={handleChange}> {myRelation}</option>
+                    <option value={member.relation = relation} onChange={handleChange}> -- options --</option>
                     {/* Mapping through each member object in our member array
                     and returning an option element with the appropriate attributes / values.
                      */}
