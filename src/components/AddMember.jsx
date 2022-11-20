@@ -96,7 +96,7 @@ const AddMember = (props) => {
                 <input id="status" type="checkbox" name="status" value={member.status} onChange={handleChange} />
                 <input id="dod" type="date" name="dod" value={member.dod} onChange={handleChange} />
                 <input type="submit" value="Add Member" />
-                <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = `${myRelation}${member.name}`}>here is the label</label>
+                <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = myRelation+member.name}>direct id: {member.direct_relation}</label>
             </form>
         </>
     )
