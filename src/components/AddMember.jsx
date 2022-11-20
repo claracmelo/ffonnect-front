@@ -4,8 +4,9 @@ import { useNavigate,useLocation  } from "react-router-dom";
 
 const AddMember = (props) => {
     const location = useLocation()
+
+    console.log("this is the location", location)
     const { myRelation } = location.state
-    console.log("this is the location", myRelation)
 
     // example
     let friends = { label: "Friend", value: "Friend" }
@@ -79,7 +80,10 @@ const AddMember = (props) => {
                     {/* Mapping through each member object in our member array
                     and returning an option element with the appropriate attributes / values.
                      */}
-
+                    {/* {myRelation?
+                         <LogoutButton onClick={this.handleLogoutClick} />
+                        : <LoginButton onClick={this.handleLoginClick} />
+                    } */}
 
 
                     {relationship.map((relation) => <option key={relation.label} value={relation.value}>{relation.label}</option>)}
