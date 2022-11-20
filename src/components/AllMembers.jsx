@@ -21,7 +21,7 @@ const AllMembers = (props) => {
             <div className='middle'>
               <div className='friends'>
                 {/* friends button */}
-                <button><Link to='/new' state={{myRelation: 'friends' }}
+                <button><Link to='/new' state={{myRelation: 'friends' }} memberName={{memberName:member.name}}
               >+</Link></button>
               </div>
               <div className='card-id'>
