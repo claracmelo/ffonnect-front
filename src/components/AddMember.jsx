@@ -7,7 +7,6 @@ const AddMember = (props) => {
     const { myRelation } = location.state
     
     console.log("member.name", member.name)
-    console.log("member_name", member_name)
     const [relationship,setRelationship] = useState([])
 
     // example
