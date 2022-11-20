@@ -40,9 +40,9 @@ const AllMembers = (props) => {
                 <button onClick={() => props.delete(member)}>&times;</button>
                 {/* children button */}
               </div>
-              <div className='love'>
+              <div className='partner'>
                 {/* love button */}
-                <button><Link to='/new' state={{myRelation: 'love' }}
+                <button><Link to='/new' state={{myRelation: 'partner' }}
               >+</Link></button>
               </div>
             </div>
@@ -54,27 +54,30 @@ const AllMembers = (props) => {
       })
       }
       <div className='card-root'>
-        <div className='parent'>
-          {/* above button */}
-          <button><NavLink to="/new">parent +</NavLink></button>
-        </div>
+      <div className='parent'>
+              {/* above button */}
+              <button><Link to='/new' state={{myRelation: 'parent' }}
+              >+</Link></button>
+            </div>
         <div className='middle'>
-          <div className='left'>
-            {/* left button */}
-            <button><NavLink to="/new">left +</NavLink></button>
-          </div>
+        <div className='friends'>
+                {/* friends button */}
+                <button><Link to='/new' state={{myRelation: 'friends' }}
+              >+</Link></button>
+              </div>
           <div className="pic">
             <img src="https://tinyurl.com/3f8jsu43" alt="user" className="main-profile-img" />
             <button className="btn-logout"><i className="fa fa-edit"></i></button>
           </div>
-          <div className='right'>
-            {/* right button */}
-            <button><NavLink to="/new">right +</NavLink></button>
-          </div>
+          <div className='partner'>
+                {/* love button */}
+                <button><Link to='/new' state={{myRelation: 'partner' }}
+              >+</Link></button>
+              </div>
         </div>
         <div className='children'>
-          <button><NavLink to="/new">children +</NavLink></button>
-        </div>
+              <button><Link to="/new" state={{myRelation: 'children' }}>+</Link></button>
+            </div>
       </div>
     </>
   )

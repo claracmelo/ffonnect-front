@@ -6,7 +6,7 @@ const AddMember = (props) => {
     const location = useLocation()
 
     console.log("this is the location", location)
-    // const { myRelation } = location.state
+    const { myRelation } = location.state
 
     // example
     let friends = { label: "Friend", value: "Friend" }
@@ -35,7 +35,7 @@ const AddMember = (props) => {
     ]
 
     // Using state to keep track of what the selected relation is
-    let [relation, setRelation] = useState("Relation")
+    let [relation, setRelation] = useState(myRelation)
 
     // Using this function to update the state of relation
     // whenever a new option is selected from the dropdown
@@ -76,7 +76,7 @@ const AddMember = (props) => {
                 <input id="name" type="text" name="name" value={member.name} onChange={handleChange} />
                 <br />
                 <select onChange={handleRelationChange}>
-                    <option value={member.relation = relation} onChange={handleChange}> -- options --</option>
+                    <option value={member.relation = relation} onChange={handleChange}> {myRelation}</option>
                     {/* Mapping through each member object in our member array
                     and returning an option element with the appropriate attributes / values.
                      */}
