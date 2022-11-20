@@ -9,7 +9,7 @@ const AllMembers = (props) => {
   return (
     <>
       <h2> Family & Friends Tree </h2>
-      {props.members.map((member) => {
+      {props.members?.map((member) => {
         return (
           // individual card
           <div className='card' key={member.id}>
