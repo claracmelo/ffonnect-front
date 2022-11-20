@@ -6,7 +6,7 @@ const AddMember = (props) => {
     const location = useLocation()
 
     console.log("this is the location", location)
-    const { myRelation } = location.state
+    // const { myRelation } = location.state
 
     // example
     let friends = { label: "Friend", value: "Friend" }
