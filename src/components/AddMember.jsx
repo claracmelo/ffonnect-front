@@ -5,8 +5,9 @@ import { useNavigate,useLocation  } from "react-router-dom";
 const AddMember = (props) => {
     const location = useLocation()
     const { myRelation } = location.state
-    const { member_name } = location.member_name
-    console.log("name id", member_name)
+    
+    console.log("member.name", member.name)
+    console.log("member_name", member_name)
     const [relationship,setRelationship] = useState([])
 
     // example
