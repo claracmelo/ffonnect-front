@@ -15,7 +15,7 @@ const AllMembers = (props) => {
           <div className='card' key={member.id}>
             <div className='parent'>
               {/* above button */}
-              <button><Link to='/new' state={{myRelation: 'parents' }}
+              <button><Link to='/new' state={{member:`${member.name}`,myRelation: 'parents' }}
               >+</Link></button>
             </div>
             <div className='middle'>
@@ -42,12 +42,12 @@ const AllMembers = (props) => {
               </div>
               <div className='partner'>
                 {/* love button */}
-                <button><Link to='/new' state={{myRelation: 'partner' }}
+                <button><Link to='/new' state={{member:`${member.name}`,myRelation: 'partner' }}
               >+</Link></button>
               </div>
             </div>
             <div className='children'>
-              <button><Link to="/new" state={{myRelation: 'children' }}>+</Link></button>
+              <button><Link to="/new" state={{member:`${member.name}`,myRelation: 'children' }}>+</Link></button>
             </div>
           </div>
         )
@@ -56,13 +56,13 @@ const AllMembers = (props) => {
       <div className='card-root'>
       <div className='parent'>
               {/* above button */}
-              <button><Link to='/new' state={{myRelation: 'parent' }}
+              <button><Link to='/new' state={{member:`${member.relation_id.username}`,myRelation: 'parent' }}
               >+</Link></button>
             </div>
         <div className='middle'>
         <div className='friends'>
                 {/* friends button */}
-                <button><Link to='/new' state={{myRelation: 'friends' }}
+                <button><Link to='/new' state={{member:`${member.relation_id.username}`,myRelation: 'friends' }}
               >+</Link></button>
               </div>
           <div className="pic">
@@ -71,12 +71,12 @@ const AllMembers = (props) => {
           </div>
           <div className='partner'>
                 {/* love button */}
-                <button><Link to='/new' state={{myRelation: 'partner' }}
+                <button><Link to='/new' state={{member:`${member.relation_id.username}`,myRelation: 'partner' }}
               >+</Link></button>
               </div>
         </div>
         <div className='children'>
-              <button><Link to="/new" state={{myRelation: 'children' }}>+</Link></button>
+              <button><Link to="/new" state={{member:`${member.relation_id.username}`,myRelation: 'children' }}>+</Link></button>
             </div>
       </div>
     </>
