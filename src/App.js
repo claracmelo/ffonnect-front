@@ -63,7 +63,7 @@ const App = () => {
           credentials: "include"
         })  
         console.log(response)
-        console.log("BODY: ",response.body)
+        console.log("BODY: ",loginBody)
   
         if (response.status === 200) {
           console.log("this is the login:",response.data)
