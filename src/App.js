@@ -59,7 +59,7 @@ const App = () => {
           body: JSON.stringify(loginBody),
           headers: {
             'Content-Type': 'application/json'
-          },body:JSON.stringify({username:user.username}),
+          },
           credentials: "include"
         })  
         console.log(response)
