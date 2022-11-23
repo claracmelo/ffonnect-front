@@ -46,7 +46,6 @@ const App = () => {
     const login = async (e) => {
       console.log('login')
       console.log(e.target.email.value)
-      console.log("this is the current user",current_user)
       e.preventDefault()
       const url = baseUrl + '/api/v1/user/login'
       const loginBody = {
@@ -60,14 +59,14 @@ const App = () => {
           body: JSON.stringify(loginBody),
           headers: {
             'Content-Type': 'application/json'
-          },
+          },body:JSON.stringify({username:user.username}),
           credentials: "include"
         })  
         console.log(response)
         console.log("BODY: ",response.body)
   
         if (response.status === 200) {
-          console.log("this is the login:",data)
+          console.log("this is the login:",response.data)
           setUser(true) 
           console.log("here before get members")
           getMembers()
