@@ -66,6 +66,12 @@ const App = () => {
         console.log("BODY: ",loginBody)
   
         if (response.status === 200) {
+
+          const jsonResponse = await response.json();
+          const {data} = jsonResponse;
+          // add new state for line below
+          setUser(data);
+
           console.log("this is the login:",response.data)
           setUser(true) 
           console.log("here before get members")
