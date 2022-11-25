@@ -21,6 +21,8 @@ let baseUrl = process.env.REACT_APP_BACKEND_URL
 const App = () => {
   const [members,setMembers]=useState([])
   const [user,setUser]=useState()
+  const [userData,setUserData]=useState()
+  
 
   const navigate = useNavigate()
   const getMembers = () => {
@@ -44,8 +46,6 @@ const App = () => {
     }
 
     const login = async (e) => {
-      console.log('login')
-      console.log(e.target.email.value)
       e.preventDefault()
       const url = baseUrl + '/api/v1/user/login'
       const loginBody = {
@@ -64,15 +64,14 @@ const App = () => {
         })  
         console.log(response)
         console.log("BODY: ",loginBody)
-  
-        if (response.status === 200) {
 
+        if (response.status === 200) {
           const jsonResponse = await response.json();
           const {data} = jsonResponse;
           // add new state for line below
-          setUser(data);
-
+          setUserData(data);
           console.log("this is the login:",response.data)
+          console.log("this is the data",data)
           setUser(true) 
           console.log("here before get members")
           getMembers()
@@ -93,6 +92,7 @@ const App = () => {
           method: 'POST',
           body: JSON.stringify({
             username: e.target.username.value,
+            last_name: e.target.username.value,
             dob:e.target.dob.value,
             password: e.target.password.value,
             email: e.target.email.value
@@ -116,7 +116,7 @@ const App = () => {
 
     const addMember =(member)=>{
       fetch(baseUrl + "/api/v1/members/",{
-        credentials: "include",method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:member.name,relation:member.relation,dob:member.dob,status:member.status,dod:member.dod})
+        credentials: "include",method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:member.name,last_name:member.last_name,relation:member.relation,dob:member.dob,status:member.status,dod:member.dod,direct_relation:member.direct_relation})
       })
       .then(res => {
         if(res.status === 200) {
@@ -133,7 +133,7 @@ const App = () => {
       console.log("first edit member: ")
       fetch(baseUrl + `/api/v1/members/${member.id}`,{
         credentials: "include",method:"PUT",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({name:member.name,relation:member.relation,dob:member.dob,status:member.status,dod:member.dod})
+        body:JSON.stringify({name:member.name,last_name:member.last_name,relation:member.relation,dob:member.dob,status:member.status,dod:member.dod})
       })
       .then(res => {
         if(res.status === 200) {
@@ -182,11 +182,11 @@ const App = () => {
           <Route path="register" element={<Register register={register} />} />
           {/* <Route path="all" element={<AllMembers members={members} delete={deleteMember}/>}/> */}
         <Route path="new" element={<Protected user={user}><AddMember addMember={addMember} /></Protected>} />
-        <Route path="user" element={<Protected user={user}><FFonnect user={user}/></Protected>}>
+        <Route path="user" element={<Protected user={user}><FFonnect user={userData}/></Protected>}>
         <Route path="" element={<Profile />}/>
           <Route path="tree" element={<Tree />} >
-          <Route path=":id" element ={<EditMember editMember={editMember}/>}/>
-          <Route path="" element={<AllMembers members={members} delete={deleteMember}/>}/>
+          <Route path=":id" element ={<EditMember members={members} editMember={editMember}/>}/>
+          <Route path="" element={<AllMembers user={userData} members={members} delete={deleteMember}/>}/>
           </Route>
           <Route path="posts" element={<Posts />} />
           <Route path="history" element={<History />}/>

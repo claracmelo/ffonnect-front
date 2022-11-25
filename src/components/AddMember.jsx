@@ -38,6 +38,7 @@ const AddMember = (props) => {
     const navigate = useNavigate()
     const [member, setMember] = useState({
         name: "",
+        last_name: "",
         relation: "",
         dob: "",
         status: "",
@@ -54,6 +55,7 @@ const AddMember = (props) => {
         props.addMember(member)
         setMember({
             name: "",
+            last_name: "",
             relation: "",
             dob: "",
             status: "",
@@ -74,7 +76,8 @@ const AddMember = (props) => {
         }
         if(myRelation === "children"){
             setRelationship(children)
-        }                        
+        }   
+          // eslint-disable-next-line react-hooks/exhaustive-deps                    
     },[])
 
     return (
@@ -83,6 +86,9 @@ const AddMember = (props) => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" name="name" value={member.name} onChange={handleChange} />
+                <br />
+                <label htmlFor="last_name">Last Name</label>
+                <input id="last_name" type="text" name="last_name" value={member.last_name} onChange={handleChange} />
                 <br />
                 <select onChange={handleRelationChange}>
                     <option value={member.relation = relation} onChange={handleChange}> {myRelation}</option>
@@ -97,7 +103,7 @@ const AddMember = (props) => {
                 <input id="status" type="checkbox" name="status" value={member.status} onChange={handleChange} />
                 <input id="dod" type="date" name="dod" value={member.dod} onChange={handleChange} />
                 <input type="submit" value="Add Member" />
-                <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = myRelation+member.name}>direct id: {member.direct_relation}</label>
+                <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = `${myRelation}.${member_name}`}>direct id: {member.direct_relation}</label>
             </form>
         </>
     )

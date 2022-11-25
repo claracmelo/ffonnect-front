@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logout from "./Logout";
 
 const NavProfile = () => {
+
     return (
         <div className="nav-profile">
             <Link to="tree">Tree</Link><br/>

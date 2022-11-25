@@ -1,11 +1,8 @@
-import { NavLink, useNavigate,Link} from 'react-router-dom';
+import { useNavigate,Link} from 'react-router-dom';
 import "../css/allMembers.css"
 
 const AllMembers = (props) => {
-
   const navigate = useNavigate()
-
-
   return (
     <>
       <h2> Family & Friends Tree </h2>
@@ -15,13 +12,13 @@ const AllMembers = (props) => {
           <div className='card' key={member.id}>
             <div className='parent'>
               {/* above button */}
-              <button><Link to='/new' state={{member:`${member.name}`,myRelation: 'parents' }}
+              <button><Link to='/new' state={{member_name:`${member.name}`,myRelation: 'parents' }}
               >+</Link></button>
             </div>
             <div className='middle'>
               <div className='friends'>
                 {/* friends button */}
-                <button><Link to='/new' state={{member:`${member.name}`,myRelation: 'friends' }}
+                <button><Link to='/new' state={{member_name:`${member.name}`,myRelation: 'friends' }}
               >+</Link></button>
               </div>
               <div className='card-id'>
@@ -29,25 +26,27 @@ const AllMembers = (props) => {
                 <label style={{ textDecoration: "none", color: "blue" }} onClick={() => { navigate(`${member.id}`) }}>
                   {member.name}
                   {/* edit button */}
-                  <i className="fa fa-edit " onClick={() => navigate(`/user/tree/${member.id}`)}></i>
+                  <Link to={`/user/tree/${member.id}`} ><i className="fa fa-edit"/></Link>
+
+                  {/* <i className="fa fa-edit" onClick={() => navigate(`/user/tree/${member.id}`)} ></i> */}
                 </label>
                 <br />
                 {/* show what relation to main user */}
                 {member.relation}<br />
-                {/* show relation id (at the moment to user) */}
-                {member.relation_id.username}<br />
+                {/* show relation user */}
+                {member.direct_relation}<br />
                 {/* delete button */}
                 <button onClick={() => props.delete(member)}>&times;</button>
                 {/* children button */}
               </div>
               <div className='partner'>
                 {/* love button */}
-                <button><Link to='/new' state={{member:`${member.name}`,myRelation: 'partner' }}
+                <button><Link to='/new' state={{member_name:`${member.name}`,myRelation: 'partner' }}
               >+</Link></button>
               </div>
             </div>
             <div className='children'>
-              <button><Link to="/new" state={{member:`${member.name}`,myRelation: 'children' }}>+</Link></button>
+              <button><Link to="/new" state={{member_name:`${member.name}`,myRelation: 'children' }}>+</Link></button>
             </div>
           </div>
         )
@@ -56,13 +55,13 @@ const AllMembers = (props) => {
       <div className='card-root'>
       <div className='parent'>
               {/* above button */}
-              <button><Link to='/new' state={{myRelation: 'parent' }}
+              <button><Link to='/new' state={{member_name:`${props.user.username}`,myRelation: 'parents' }}
               >+</Link></button>
             </div>
         <div className='middle'>
         <div className='friends'>
                 {/* friends button */}
-                <button><Link to='/new' state={{myRelation: 'friends' }}
+                <button><Link to='/new' state={{member_name:`${props.user.username}`,myRelation: 'friends' }}
               >+</Link></button>
               </div>
           <div className="pic">
@@ -71,12 +70,14 @@ const AllMembers = (props) => {
           </div>
           <div className='partner'>
                 {/* love button */}
-                <button><Link to='/new' state={{myRelation: 'partner' }}
+                <button><Link to='/new' state={{member_name:`${props.user.username}`,myRelation: 'partner' }}
               >+</Link></button>
               </div>
+
+            <label > {props.user.username} {props.user.last_name}</label>
         </div>
         <div className='children'>
-              <button><Link to="/new" state={{myRelation: 'children' }}>+</Link></button>
+              <button><Link to="/new" state={{member_name:`${props.user.username}`,myRelation: 'children' }}>+</Link></button>
             </div>
       </div>
     </>

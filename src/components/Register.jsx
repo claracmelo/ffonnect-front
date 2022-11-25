@@ -17,8 +17,11 @@ const Register = (props) => {
         </div>
         <div className="body">
           <form onSubmit={props.register}>
-            <label htmlFor="name">Full Name</label>
+            <label htmlFor="name">Name</label>
             <input type="text" id="name" name="username"/>
+            <br />
+            <label htmlFor="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name"/>
             <br />
             <label htmlFor="date">Date of Birth</label>
             <input type="date" id="dob" name="dob"/>
