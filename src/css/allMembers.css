@@ -1,58 +1,64 @@
-.card-3,.card-2,.card-1,.card3,.card2,.card1,.card-root,.card{
+.cardM4,.cardM3,.cardM2,.cardM1,.card4,.card3,.card2,.card1,.card-root,.card{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid green;
-    margin: 10px;
-    width: 180px;
-    height: 140px;
     border-radius: 15px;
-    padding: 10px;
+    position: fixed;
 }
-.card1{
+.card1 .card-id{
     background-color: lightgoldenrodyellow;
 }
-.card2{
+.card2 .card-id{
     background-color: lightpink;
 }
-.card3{
+.card3 .card-id{
     background-color: lightgreen;
 }
-.card-1{
+.cardM1 .card-id{
     background-color: lightskyblue;
 }
-.card-2{
+.cardM2 .card-id{
     background-color: lightsalmon;
 }
-.card-3{
+.cardM3 .card-id{
     background-color: lightslategray;
 }
 .card-id {
     border: 1px solid gold;
     border-radius: 10px;
     padding: 10px;
-    height: 80px;
 }
 .card-id img{
     width:70px;
     height:70px
 }
-.card-root {
-    width: 180px;
+.card-root .card-id {
+    width: 160px;
     background-color: lightcyan;
 }
+
 .middle{
     max-width:175px; 
     display: flex;
     align-items: center;
+    border: none;
+    background-color: Transparent;
 }
 a {
     text-decoration: none;
 }
 .middle button{
     color: red;
+    border: none;
+    background-color: Transparent;
+}
+.children button{
+    border: none;
+    background-color: Transparent;
 }
 .parent button{
+    border: none;
+    background-color: Transparent;
     width: 25px;
 }
 Link {
@@ -71,46 +77,42 @@ Link {
 }
 .tree{
     /* resize: both; */
-    min-height: 800px;
+    min-height: 1200px;
     width: 100%;
 }
 .title{
     background-color: white;
 }
-
+.pic-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user-name{
+    text-align: center;
+}
+.card-root{
+    top: 420px
+}
+.card1{
+    top: 305px;
+}
+.card2{
+    top: 190px;
+}
+.card3{
+    top: 75px
+}
+.cardM1{
+    top: 570px
+}
+.cardM2{
+    top: 680px
+}
+.cardM3{
+    top: 785px
+}
 .row0{
-    position: fixed;
-    border: 1px solid green;
-    height: 180px;
-    width: auto;
-    top: 600px;
-}
-.row1{
-    position: fixed;
-    border: 1px solid green;
-    height: 180px;
-    width: auto;
-    top: 400px;  
-}
-.row2{
-    position: fixed;
-    border: 1px solid green;
-    height: 180px;
-    width: auto;
-    top: 200px;     
-}
-.row3{
-    height: 180px;    
-}
-.row-1{
-    height: 180px;    
-}
-.row-2{
-    height: 180px;    
-}
-.row-3{
-    height: 180px;    
-}
-.card{
-    left: 450px
+    display: flex;
+    
 }

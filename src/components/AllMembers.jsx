@@ -4,8 +4,7 @@ import pic from "../css/whistler.jpeg"
 
 const AllMembers = (props) => {
   const navigate = useNavigate()
-  let upperSide = 500
-  let leftSide = 0
+  let leftSide = 350
 
   return (
     <div className='tree'>
@@ -14,11 +13,19 @@ const AllMembers = (props) => {
       {props.members?.map((member) => {
         return (
           // individual car
-          <>
-          {member.direct_relation.includes("friends.") ? leftSide===leftSide-250 : member.direct_relation.includes("parents.") ? member.upperSide===upperSide-250 : member.direct_relation.includes("children.") ? upperSide===upperSide+250  : member.direct_relation.includes("partner.") ? leftSide===leftSide+250 : upperSide === 500 || leftSide===0}
-                  
-           <div className={`row${member.row}`} key={member.id} style={{ left: leftSide-250 }} >           
-            <div className={member.row === 1 ? 'card1' : member.row === 2 ? `card2` : member.row === 3 ? 'card3' : member.row === 4 ? 'card4' : member.row === -1 ? 'card-1' : member.row === -2 ? 'card-2' : member.row === -3 ? 'card-3' : member.row === -4 ? 'card-4' : "card-root"} >
+          <>    
+           <div className={
+            `row${member.row===-1?"M1":
+           member.row===-2?"M2":member.row===-3?"M3":
+           member.row===-4?"M4":member.row}`} key={member.id} >   
+            <div className={
+              member.row === 0 ? 'card-root':
+            member.row === 1 ? 'card1': 
+            member.row === 2 ? `card2` : 
+            member.row === 3 ? 'card3' : member.row === 4 ? 'card4' : 
+            member.row === -1 ? 'cardM1' : member.row === -2 ? 'cardM2' : 
+            member.row === -3 ? 'cardM3' : member.row === -4 ? 'cardM4' : "card-root"} 
+            style={{ left: leftSide=leftSide>=700?leftSide=500:leftSide=leftSide+50}} >
               <div className='parent'>
                 {/* above button */}
                 <button><Link to='/new' state={{ member_name: `${member.name}`, myRelation: 'parents', userRow: member.row }}
@@ -66,8 +73,8 @@ const AllMembers = (props) => {
         )
       })
       }
-      <div className='row0' style={{ left: leftSide }} >
-        <div className='card-root' >
+      <div className='row0' >
+        <div className='card-root' style={{ left: 500}} >
           <div className='parent'>
             {/* above button */}
             <button><Link to='/new' state={{ member_name: `${props.user.username}`, myRelation: 'parents', userRow: 0 }}
@@ -80,7 +87,12 @@ const AllMembers = (props) => {
               >+</Link></button>
             </div>
             <div className='card-id'>
+              <div className='pic-user'>
               <img src={pic} alt="user" />
+              </div>
+              <div className='user-name'>
+                {props.user.username} {props.user.last_name} 
+              </div>
               {/* <button className="btn-logout"><i className="fa fa-edit"></i></button> */}
             </div>
             <div className='partner'>
