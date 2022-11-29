@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
-    position: fixed;
+    position: absolute;
 }
 .card1 .card-id{
     background-color: lightgoldenrodyellow;
@@ -112,7 +112,6 @@ Link {
 .cardM3{
     top: 785px
 }
-.row0{
+.row0,.row1,.row2,.row3{
     display: flex;
-    
 }

@@ -4,16 +4,17 @@ import pic from "../css/whistler.jpeg"
 
 const AllMembers = (props) => {
   const navigate = useNavigate()
-  let leftSide = 350
+  let leftSide = 250
 
   return (
     <div className='tree'>
       <div className='title'><h2> Family & Friends Tree </h2></div>
-
+      {console.log(props.members)}
       {props.members?.map((member) => {
         return (
           // individual car
           <>    
+          
            <div className={
             `row${member.row===-1?"M1":
            member.row===-2?"M2":member.row===-3?"M3":
@@ -25,7 +26,7 @@ const AllMembers = (props) => {
             member.row === 3 ? 'card3' : member.row === 4 ? 'card4' : 
             member.row === -1 ? 'cardM1' : member.row === -2 ? 'cardM2' : 
             member.row === -3 ? 'cardM3' : member.row === -4 ? 'cardM4' : "card-root"} 
-            style={{ left: leftSide=leftSide>=700?leftSide=500:leftSide=leftSide+50}} >
+            style={{ left: leftSide=leftSide>=650?leftSide=250:leftSide=leftSide+100}} >
               <div className='parent'>
                 {/* above button */}
                 <button><Link to='/new' state={{ member_name: `${member.name}`, myRelation: 'parents', userRow: member.row }}
@@ -74,7 +75,7 @@ const AllMembers = (props) => {
       })
       }
       <div className='row0' >
-        <div className='card-root' style={{ left: 500}} >
+        <div className='card-root' style={{ left: 350}} >
           <div className='parent'>
             {/* above button */}
             <button><Link to='/new' state={{ member_name: `${props.user.username}`, myRelation: 'parents', userRow: 0 }}

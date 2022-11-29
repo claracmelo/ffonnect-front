@@ -16,7 +16,12 @@ const About = () => {
         </div>
         <div className="body">
           <div>
-          Here we talk about this project 
+            This is a personal project, where you can track your Family tree.
+            You can add a family member or a friend
+            You will have a direct connection to the main user as well as the member that you were added from.
+            You can add, delete, edit or show the info about your member
+            You can only access the site after creating an account
+
           </div>
         </div>
         <div className="footer">
