@@ -1,5 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom';
 import "../css/allMembers.css"
+import pic from "../css/whistler.jpeg"
 
 const AllMembers = (props) => {
   const navigate = useNavigate()
@@ -73,7 +74,7 @@ const AllMembers = (props) => {
             >+</Link></button>
           </div>
           <div className='card-id'>
-            <img src="https://tinyurl.com/3f8jsu43" alt="user" className="main-profile-img" />
+          <img src={pic} alt="user" />
             {/* <button className="btn-logout"><i className="fa fa-edit"></i></button> */}
           </div>
           <div className='partner'>

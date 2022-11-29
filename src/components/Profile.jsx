@@ -1,6 +1,7 @@
 import React from "react";
 import NavProfile from "./NavProfile";
 import "../css/profile.css"
+import pic from "../css/whistler.jpeg"
 
 const Profile = ({user}) => {
     
@@ -11,7 +12,7 @@ const lastName = user.last_name
         <div className="profile">
             {/* show the user pic */}
             <div className="img">
-                <img src="https://tinyurl.com/3f8jsu43" alt="user" />
+                <img src={pic} alt="user" />
                 </div>
             
             <br/>
