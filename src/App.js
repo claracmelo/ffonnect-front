@@ -15,6 +15,7 @@ import History from "./components/History";
 import AllMembers from "./components/AllMembers";
 import EditMember from "./components/EditMember";
 import Profile from "./components/Profile";
+import ShowMember from "./components/ShowMember";
 
 let baseUrl = process.env.REACT_APP_BACKEND_URL
 
@@ -92,7 +93,7 @@ const App = () => {
           method: 'POST',
           body: JSON.stringify({
             username: e.target.username.value,
-            last_name: e.target.username.value,
+            last_name: e.target.last_name.value,
             dob:e.target.dob.value,
             password: e.target.password.value,
             email: e.target.email.value
@@ -116,7 +117,7 @@ const App = () => {
 
     const addMember =(member)=>{
       fetch(baseUrl + "/api/v1/members/",{
-        credentials: "include",method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:member.name,last_name:member.last_name,relation:member.relation,dob:member.dob,status:member.status,dod:member.dod,direct_relation:member.direct_relation})
+        credentials: "include",method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:member.name,last_name:member.last_name,relation:member.relation,dob:member.dob,status:member.status,dod:member.dod,direct_relation:member.direct_relation, row:member.row})
       })
       .then(res => {
         if(res.status === 200) {
@@ -186,6 +187,7 @@ const App = () => {
         <Route path="" element={<Profile />}/>
           <Route path="tree" element={<Tree />} >
           <Route path=":id" element ={<EditMember members={members} editMember={editMember}/>}/>
+          <Route path="member/:id" element ={<ShowMember />}/>
           <Route path="" element={<AllMembers user={userData} members={members} delete={deleteMember}/>}/>
           </Route>
           <Route path="posts" element={<Posts />} />

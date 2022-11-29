@@ -20,8 +20,8 @@ const Register = (props) => {
             <label htmlFor="name">Name</label>
             <input type="text" id="name" name="username"/>
             <br />
-            <label htmlFor="full_name">Full Name</label>
-            <input type="text" id="full_name" name="full_name"/>
+            <label htmlFor="full_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name"/>
             <br />
             <label htmlFor="date">Date of Birth</label>
             <input type="date" id="dob" name="dob"/>

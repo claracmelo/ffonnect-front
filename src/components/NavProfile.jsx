@@ -6,7 +6,7 @@ const NavProfile = () => {
 
     return (
         <div className="nav-profile">
-            <Link to="tree">Tree</Link><br/>
+
             <Link to="posts">Posts</Link><br/>
             <Link to="History">History</Link><br/><br/>
             <Logout />

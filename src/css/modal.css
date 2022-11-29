@@ -53,12 +53,12 @@
     align-items: center;
   }
   
-  .modalContainer .footer button {
+  .modalContainer .footer button, #input {
     width: 150px;
     height: 45px;
     margin-top: 80px;
     border: none;
-    background-color: cornflowerblue;
+    background-color: rgb(118, 185, 166);
     color: white;
     border-radius: 8px;
     font-size: 20px;

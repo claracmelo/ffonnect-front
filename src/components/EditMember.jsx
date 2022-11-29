@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate, NavLink, useLocation } from "react-router-dom";
 
 const EditMember = (props) => {
-  console.log("direct_relation", props.members)
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const navigate = useNavigate()
   const [member, setMember] = useState({});
   let { id } = useParams()
+  let isDisabled = false
   let baseUrl = 'http://localhost:8000'
 
+  const location = useLocation()
+  let { direct_relation } = location.state
+  console.log("direct_relation", props.members)
   const [relationship, setRelationship] = useState([])
   let [myRelation, setMyRelation] = useState([])
   // example
@@ -22,7 +26,7 @@ const EditMember = (props) => {
     { label: "Grand Mother", value: "Grand Mother" },
     { label: "Great Grand Mother", value: "Great Grand Mother" },
     { label: "Great Great Grand Mother", value: "Great Great Grand Mother" },
-    { label: "Great Great Great Grand Mother", value: "Great Great Great Grand Mother" } 
+    { label: "Great Great Great Grand Mother", value: "Great Great Great Grand Mother" }
   ]
   let children = [
     { label: "Daughter", value: "Daughter" },
@@ -72,12 +76,18 @@ const EditMember = (props) => {
   }
   useEffect(() => {
     getOneMemberById(id)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
   const handleChange = (e) => {
     setMember((prev) => ({ ...member, [e.target.name]: e.target.value }))
+    if (e.target.checked) {
+      console.log('✅ Checkbox is checked');
+    } else {
+      console.log('⛔️ Checkbox is NOT checked');
+    }
+    setIsSubscribed(current => !current);
   }
 
   const handleSubmit = (e) => {
@@ -90,56 +100,74 @@ const EditMember = (props) => {
       dob: "",
       status: "",
       dod: "",
-      direct_relation:""
+      direct_relation: ""
     })
     navigate("/user/tree")
   }
 
   useEffect(() => {
     getOneMemberById(id)
-    // if (direct_relation.includes("friends")) {
-    //   setMyRelation("friends")
-    //   setRelationship(friends)
-    // }
-    // if (direct_relation.includes("parents")) {
-    //   setMyRelation("parents")
-    //   setRelationship(parents)
-    // }
-    // if (direct_relation.includes("partner")) {
-    //   setMyRelation("partner")
-    //   setRelationship(partner)
-    // }
-    // if (direct_relation.includes("children")) {
-    //   setMyRelation("children")
-    //   setRelationship(children)
-    // }
+    if (direct_relation.includes("friends")) {
+      setMyRelation("friends")
+      setRelationship(friends)
+    }
+    if (direct_relation.includes("parents")) {
+      setMyRelation("parents")
+      setRelationship(parents)
+    }
+    if (direct_relation.includes("partner")) {
+      setMyRelation("partner")
+      setRelationship(partner)
+    }
+    if (direct_relation.includes("children")) {
+      setMyRelation("children")
+      setRelationship(children)
+    }
     //   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <>
-      <h1>Edit Member</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input id="name" type="text" name="name" value={member.name} onChange={handleChange} />
-        <br />
-        <label htmlFor="last_name">Last Name</label>
-        <input id="last_name" type="text" name="last_name" value={member.last_name} onChange={handleChange} />
-        <br />
-        <select onChange={handleRelationChange}>
-          <option value={member.relation = relation} onChange={handleChange}> {myRelation}</option>
-          {/* Mapping through each member object in our member array
+
+    <div className="modalBackground">
+      <div className="modalContainer">
+        <div className="titleCloseBtn">
+          <button>
+            <NavLink to="/user/tree">&times;</NavLink>
+          </button>
+        </div>
+        <div className="title">
+          <h1>Edit Member</h1>
+        </div>
+        <div className="body">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" name="name" value={member.name} onChange={handleChange} />
+            <br />
+            <label htmlFor="last_name">Last Name</label>
+            <input id="last_name" type="text" name="last_name" value={member.last_name} onChange={handleChange} />
+            <br />
+            Choose Relationship: <select onChange={handleRelationChange}>
+              <option value={member.relation = relation} onChange={handleChange}> {myRelation}</option>
+              {/* Mapping through each member object in our member array
                     and returning an option element with the appropriate attributes / values.
                      */}
-          {relationship?.map((relation) => <option key={relation.label} value={relation.value}>{relation.label}</option>)}
-        </select>
-        <br />
-        <input id="relation" type="date" name="dob" value={member.dob} onChange={handleChange} />
-        <input id="status" type="checkbox" name="status" value={member.status} onChange={handleChange} />
-        <input id="dod" type="date" name="dod" value={member.dod} onChange={handleChange} />
-        <input type="submit" value="Edit Member" />
-      </form>
-    </>
-
+              {relationship?.map((relation) => <option key={relation.label} value={relation.value}>{relation.label}</option>)}
+            </select>
+            <br />
+            <label htmlFor="last_name">DOB:</label>
+            <input id="relation" type="datetime-local" name="dob" value={member.dob} onChange={handleChange} /><br />
+            Dead?(Y/N)
+            <input id="status" type="checkbox" checked={isSubscribed} name="status" value={member.status} onChange={handleChange} /><br />
+            {
+              isSubscribed ? isDisabled = false : isDisabled = true
+            }
+            <label htmlFor="dod">DOD</label>
+            <input id="dod" type="datetime-local" name="dod" value={member.dod} onChange={handleChange} disabled={isDisabled} />
+            
+            <input id="input" className="footer" type="submit" value="Edit Member" />
+          </form>
+        </div>
+      </div>
+    </div>
   )
 }
 

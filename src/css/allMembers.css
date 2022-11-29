@@ -1,33 +1,55 @@
-.card,.card-root {
+.card-3,.card-2,.card-1,.card3,.card2,.card1,.card-root,.card{
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid green;
     margin: 10px;
-    width: 160px;
+    width: 180px;
     border-radius: 15px;
     padding: 10px;
 }
-
+.card1{
+    background-color: lightgoldenrodyellow;
+}
+.card2{
+    background-color: lightpink;
+}
+.card3{
+    background-color: lightgreen;
+}
+.card-1{
+    background-color: lightskyblue;
+}
+.card-2{
+    background-color: lightsalmon;
+}
+.card-3{
+    background-color: lightslategray;
+}
 .card-id {
     border: 1px solid gold;
     border-radius: 10px;
     padding: 10px;
 }
-
+.card-id img{
+    width:70px;
+    height:70px
+}
 .card-root {
-    border: 1px solid green;
-    width: 150px;
-    height: 150px;
+
+    width: 180px;
+    background-color: lightcyan;
 }
 .middle{
-    max-width:150px; 
+    max-width:175px; 
     display: flex;
     align-items: center;
-    border: 1px solid blue;
 }
-.parent{
-    border: 1px solid red;
+a {
+    text-decoration: none;
+}
+.middle button{
+    color: red;
 }
 .parent button{
     width: 25px;
@@ -35,24 +57,6 @@
 Link {
     text-decoration: none;
 }
-.pic {
-    display: flex;
-    align-items: center;
-    
-}
-
-.tree img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: #FFFFFF;
-    box-shadow: 0 0 8px 3px #B8B8B8;
-}
-
-/* .pic {
-    position: relative;
-  } */
 
 .btn-logout {
     width: 30px;
@@ -63,4 +67,33 @@ Link {
     left: 113px;
     background: white;
     color: blue;
+}
+.tree{
+    resize: both;
+    height: 1600px;
+    width: 100%;
+}
+
+.row0{
+    float: left;
+    border: 1px solid green;
+    height: 180px;
+}
+.row1{
+    height: 180px;    
+}
+.row2{
+    height: 180px;    
+}
+.row3{
+    height: 180px;    
+}
+.row-1{
+    height: 180px;    
+}
+.row-2{
+    height: 180px;    
+}
+.row-3{
+    height: 180px;    
 }
