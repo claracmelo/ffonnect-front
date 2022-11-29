@@ -11,7 +11,7 @@ const FFonnect = ({user}) => {
                 <Outlet />
             </div>
             <div className="f-profile">
-                <h2>Profile Page</h2>       
+                
                 <Profile user={user}/>
             </div>
 

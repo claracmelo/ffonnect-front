@@ -10,12 +10,20 @@ const lastName = user.last_name
     return (
         <div className="profile">
             {/* show the user pic */}
-            <img src="https://tinyurl.com/3f8jsu43" alt="user" />
+            <div className="img">
+                <img src="https://tinyurl.com/3f8jsu43" alt="user" />
+                </div>
+            
             <br/>
             {/* show the username */}
-            <label htmlFor="name">{name} {lastName} </label>
-            <br/>
+            <div className="name">
+            <label id="profile_name">{name} {lastName} </label>
+            
+            
+            </div>
+            <div className="nav">
             <NavProfile />
+            </div>
         </div>
     )
 }

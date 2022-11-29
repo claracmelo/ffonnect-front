@@ -17,10 +17,6 @@
   box-shadow: 0 0 8px 3px #B8B8B8;
 }
 
-/* .pic {
-  position: relative;
-} */
-
 .btn-logout {
   width: 30px;
   height: 30px;
@@ -31,3 +27,4 @@
   background: white;
   color: blue;
 }
+

@@ -7,7 +7,7 @@ const EditMember = (props) => {
   const [member, setMember] = useState({});
   let { id } = useParams()
   let isDisabled = false
-  let baseUrl = 'http://localhost:8000'
+  let baseUrl = process.env.REACT_APP_BACKEND_URL
 
   const location = useLocation()
   let { direct_relation } = location.state

@@ -8,7 +8,7 @@ const ShowMember = () => {
 
   const navigate = useNavigate()
 
-  let baseUrl = 'http://localhost:8000'
+  let baseUrl = process.env.REACT_APP_BACKEND_URL
   const getOneMemberById = (id) => {
     // fetch to the backend
     fetch(baseUrl + "/api/v1/members/" + id, {
@@ -24,6 +24,17 @@ const ShowMember = () => {
         console.log("this is the data: ", data.data)
         setMember(data.data)
       })
+  }
+  function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+  
+  function formatDate(date) {
+    return [
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+      date.getFullYear(),   
+    ].join('/');
   }
   useEffect(() => {
     getOneMemberById(id)
@@ -43,9 +54,9 @@ const ShowMember = () => {
         </div>
         <div className="body">
           <div>
-          <label>Date of Birth: {member.dob.substring(0, 10)}</label><br />
+          <label>Date of Birth: {formatDate(new Date(member.dob))}</label><br />
           {
-            member.status!=false?`Date of death(${member.status}): ${member.dod}`:`Date of death(${member.status}): Alive`
+            member.status!==false?`Date of death(${member.status}): ${member.dod}`:`Date of death(${member.status}): Alive`
           }          
           <br />
           <label>Related to: {member.direct_relation}</label>

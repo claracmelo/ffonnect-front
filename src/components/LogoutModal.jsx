@@ -16,7 +16,7 @@ const LoginModal=({ setOpenModal }) =>{
           </button>
         </div>
         <div className="title">
-          <h1>Are You Sure You Want to Logout?</h1>
+          <h2>Are You Sure You Want to Logout?</h2>
         </div>
        
         <div className="footer">

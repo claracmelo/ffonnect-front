@@ -5,6 +5,7 @@ import { useNavigate, useLocation, NavLink } from "react-router-dom";
 const AddMember = (props) => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const location = useLocation()
+    
     let { member_name, myRelation, userRow } = location.state
     console.log("name", member_name, userRow)
     const [relationship, setRelationship] = useState([])
@@ -78,24 +79,26 @@ const AddMember = (props) => {
         if (myRelation === "friends") {
             setRelationship(friends)
             setRow(userRow)
-        } else
-            if (myRelation === "parents") {
+        } 
+        if (myRelation === "parents") {
                 setRelationship(parents)
+                 // eslint-disable-next-line
                 userRow += 1
                 setRow(userRow)
                 console.log("userRow", userRow)
-                console.log("Row", setRow(userRow))
-            } else
-                if (myRelation === "partner") {
+            }
+
+        if (myRelation === "partner") {
                     setRelationship(partner)
                     setRow(userRow)
                 }
         if (myRelation === "children") {
             setRelationship(children)
+             // eslint-disable-next-line
             userRow -= 1
             setRow(userRow)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps            
+      
     }, [])
 
     return (
@@ -135,8 +138,8 @@ const AddMember = (props) => {
             }
                         <label htmlFor="dod">DOD:</label>
                         <input id="dod" type="datetime-local" name="dod" value={member.dod} onChange={handleChange} disabled={isDisabled}/><br />
-                        <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = `${myRelation}.${member_name}`}>direct id: {member.direct_relation}</label><br />
-                        <label id="row" type="number" name="row" value={member.row = row}>row - {row}</label>
+                        <label id="direct_relation" type="text" name="direct_relation" value={member.direct_relation = `${myRelation}.${member_name}`}>Related to: {member.direct_relation}</label><br />
+                        <label id="row" type="number" name="row" value={member.row = row}/>
                         <input type="submit" id="input" className="footer" value="Add Member" /><br />
                     </form>
                 </div>

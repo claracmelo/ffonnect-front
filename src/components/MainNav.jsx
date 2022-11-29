@@ -1,7 +1,4 @@
 import React from "react";
-// import Login from "./Login";
-// import Register from "./Register";
-import About from "./About";
 import { NavLink } from "react-router-dom";
 import "../css/ModalMainButtons.css";
 
@@ -19,7 +16,11 @@ const MainNav = () => {
                     <NavLink to="register">New User?</NavLink>
                 </button>
             </div>
-            <About />
+            <div className="App">
+                <button className="openModalBtn">
+                    <NavLink to="about">About Us</NavLink>
+                </button>
+            </div>
         </div>
     )
 }

@@ -69,9 +69,12 @@ Link {
     color: blue;
 }
 .tree{
-    resize: both;
-    height: 1600px;
+    /* resize: both; */
+    min-height: 800px;
     width: 100%;
+}
+.title{
+    background-color: white;
 }
 
 .row0{

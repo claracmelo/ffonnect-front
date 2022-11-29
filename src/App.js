@@ -63,7 +63,6 @@ const App = () => {
           },
           credentials: "include"
         })  
-        console.log(response)
         console.log("BODY: ",loginBody)
 
         if (response.status === 200) {
@@ -71,7 +70,6 @@ const App = () => {
           const {data} = jsonResponse;
           // add new state for line below
           setUserData(data);
-          console.log("this is the login:",response.data)
           console.log("this is the data",data)
           setUser(true) 
           console.log("here before get members")
@@ -83,7 +81,11 @@ const App = () => {
         console.log('Error => ', err);
       }
     }
-  
+    const logout = (data) => {
+      setUserData.removeItem(data);
+      setUser(false);
+    };
+
   const register = async (e) => {
       e.preventDefault()
       console.log(e.target)
