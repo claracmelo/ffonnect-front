@@ -5,6 +5,7 @@
     border: 1px solid green;
     margin: 10px;
     width: 180px;
+    height: 140px;
     border-radius: 15px;
     padding: 10px;
 }
@@ -30,13 +31,13 @@
     border: 1px solid gold;
     border-radius: 10px;
     padding: 10px;
+    height: 80px;
 }
 .card-id img{
     width:70px;
     height:70px
 }
 .card-root {
-
     width: 180px;
     background-color: lightcyan;
 }
@@ -78,15 +79,25 @@ Link {
 }
 
 .row0{
-    float: left;
+    position: fixed;
     border: 1px solid green;
     height: 180px;
+    width: auto;
+    top: 600px;
 }
 .row1{
-    height: 180px;    
+    position: fixed;
+    border: 1px solid green;
+    height: 180px;
+    width: auto;
+    top: 400px;  
 }
 .row2{
-    height: 180px;    
+    position: fixed;
+    border: 1px solid green;
+    height: 180px;
+    width: auto;
+    top: 200px;     
 }
 .row3{
     height: 180px;    
@@ -99,4 +110,7 @@ Link {
 }
 .row-3{
     height: 180px;    
+}
+.card{
+    left: 450px
 }
